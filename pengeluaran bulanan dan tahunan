@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+#define MAX_MONTHS 12
+
+int main() {
+    // Inisialisasi variabel
+    float monthly_expenses[MAX_MONTHS] = {0};
+    float total_expenses = 0;
+    int num_months;
+
+    // Meminta pengguna untuk memasukkan jumlah bulan yang ingin dihitung
+    printf("Masukkan jumlah bulan yang ingin dihitung (maksimal %d): ", MAX_MONTHS);
+    scanf("%d", &num_months);
+
+    // Memastikan num_months tidak melebihi batas
+    if (num_months > MAX_MONTHS) {
+        printf("Jumlah bulan tidak boleh melebihi %d.\n", MAX_MONTHS);
+        return 1; // Keluar dengan kode kesalahan
+    }
+
+    // Input pengeluaran untuk setiap bulan
+    for (int i = 0; i < num_months; i++) {
+        printf("Masukkan pengeluaran untuk bulan %d: $", i + 1);
+        scanf("%f", &monthly_expenses[i]);
+        total_expenses += monthly_expenses[i];
+    }
+
+    // Tampilkan daftar pengeluaran bulanan hingga bulan tertentu
+    printf("\nDaftar pengeluaran bulanan:\n");
+    for (int i = 0; i < num_months; i++) {
+        printf("Bulan %d: $%.2f\n", i + 1, monthly_expenses[i]);
+    }
+
+    // Tampilkan total pengeluaran hingga bulan tertentu
+    printf("\nTotal pengeluaran hingga bulan %d: $%.2f\n", num_months, total_expenses);
+
+    return 0;
+}
